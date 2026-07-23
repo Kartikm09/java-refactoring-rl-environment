@@ -1,0 +1,11 @@
+diff --git a/src/lab/Order.java b/src/lab/Order.java
+--- a/src/lab/Order.java
++++ b/src/lab/Order.java
+@@ -7,6 +7,7 @@
+     private final Map<String, Integer> remaining = new LinkedHashMap<>();
+     public Order(Map<String, Integer> lines) { remaining.putAll(lines); }
+     public Map<String, Integer> remaining() { return Map.copyOf(remaining); }
++    public void cancelPart(String sku, int quantity, Inventory inventory, Audit audit) { inventory.release(sku, quantity); audit.append("ORDER_PARTIALLY_CANCELLED"); }
+     public void cancelAll(Inventory inventory, Audit audit) {
+         remaining.forEach(inventory::release);
+         remaining.clear();

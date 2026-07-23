@@ -1,0 +1,54 @@
+diff --git a/CANDIDATE_NOTES.md b/CANDIDATE_NOTES.md
+new file mode 100644
+--- /dev/null
++++ b/CANDIDATE_NOTES.md
+@@ -0,0 +1,3 @@
++# Candidate Notes
++
++Encodes tier, volume, coupon, and floor behavior as ordered strategies; integer operation order remains unchanged.
+diff --git a/src/pricing/PricingContext.java b/src/pricing/PricingContext.java
+new file mode 100644
+--- /dev/null
++++ b/src/pricing/PricingContext.java
+@@ -0,0 +1,3 @@
++package pricing;
++
++public record PricingContext(int quantity, String tier, boolean coupon) { }
+diff --git a/src/pricing/PricingEngine.java b/src/pricing/PricingEngine.java
+--- a/src/pricing/PricingEngine.java
++++ b/src/pricing/PricingEngine.java
+@@ -1,12 +1,20 @@
+ package pricing;
+ 
++import java.util.List;
++import java.util.Map;
++
+ public final class PricingEngine {
++    private static final Map<String, Integer> TIER_PERCENT = Map.of("GOLD", 90, "SILVER", 95);
++    private final List<PricingRule> rules = List.of(
++        (current, context) -> current * TIER_PERCENT.getOrDefault(context.tier(), 100) / 100,
++        (current, context) -> context.quantity() >= 10 ? current - 500 : current,
++        (current, context) -> context.coupon() ? current - 250 : current,
++        (current, context) -> Math.max(0, current));
++
+     public long price(long subtotal, int quantity, String customerTier, boolean coupon) {
++        PricingContext context = new PricingContext(quantity, customerTier, coupon);
+         long total = subtotal;
+-        if ("GOLD".equals(customerTier)) { total = total * 90 / 100; }
+-        else if ("SILVER".equals(customerTier)) { total = total * 95 / 100; }
+-        if (quantity >= 10) { total -= 500; }
+-        if (coupon) { total -= 250; }
+-        return Math.max(0, total);
++        for (PricingRule rule : rules) { total = rule.apply(total, context); }
++        return total;
+     }
+ }
+diff --git a/src/pricing/PricingRule.java b/src/pricing/PricingRule.java
+new file mode 100644
+--- /dev/null
++++ b/src/pricing/PricingRule.java
+@@ -0,0 +1,4 @@
++package pricing;
++
++@FunctionalInterface
++public interface PricingRule { long apply(long current, PricingContext context); }

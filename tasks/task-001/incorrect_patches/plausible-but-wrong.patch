@@ -1,0 +1,12 @@
+diff --git a/src/lab/InventoryReservationService.java b/src/lab/InventoryReservationService.java
+--- a/src/lab/InventoryReservationService.java
++++ b/src/lab/InventoryReservationService.java
+@@ -17,7 +17,7 @@
+         if (quantity <= 0) { throw new IllegalArgumentException("quantity must be positive"); }
+         int available = stock.getOrDefault(sku, 0);
+         if (available < quantity) { throw new IllegalStateException("insufficient stock"); }
+-        stock.put(sku, available - quantity);
++        stock.putIfAbsent(sku, available - quantity);
+         Reservation created = new Reservation(key, sku, quantity);
+         Reservation previous = completed.putIfAbsent(key, created);
+         if (previous != null) { return previous; }

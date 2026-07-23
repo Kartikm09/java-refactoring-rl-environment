@@ -1,0 +1,49 @@
+diff --git a/CANDIDATE_NOTES.md b/CANDIDATE_NOTES.md
+new file mode 100644
+--- /dev/null
++++ b/CANDIDATE_NOTES.md
+@@ -0,0 +1,3 @@
++# Candidate Notes
++
++Uses a per-idempotency-key critical section and atomic per-SKU stock update. Distinct keys are not globally serialized.
+diff --git a/src/lab/InventoryReservationService.java b/src/lab/InventoryReservationService.java
+--- a/src/lab/InventoryReservationService.java
++++ b/src/lab/InventoryReservationService.java
+@@ -6,6 +6,7 @@
+ public final class InventoryReservationService {
+     private final Map<String, Integer> stock = new ConcurrentHashMap<>();
+     private final Map<String, Reservation> completed = new ConcurrentHashMap<>();
++    private final Map<String, Object> locks = new ConcurrentHashMap<>();
+     private final AuditLog audit;
+ 
+     public InventoryReservationService(Map<String, Integer> initial, AuditLog audit) {
+@@ -15,14 +16,21 @@
+ 
+     public Reservation reserve(String key, String sku, int quantity) {
+         if (quantity <= 0) { throw new IllegalArgumentException("quantity must be positive"); }
+-        int available = stock.getOrDefault(sku, 0);
+-        if (available < quantity) { throw new IllegalStateException("insufficient stock"); }
+-        stock.put(sku, available - quantity);
+-        Reservation created = new Reservation(key, sku, quantity);
+-        Reservation previous = completed.putIfAbsent(key, created);
+-        if (previous != null) { return previous; }
+-        audit.append("reserved:" + key + ":" + sku + ":" + quantity);
+-        return created;
++        Object lock = locks.computeIfAbsent(key, ignored -> new Object());
++        synchronized (lock) {
++            Reservation previous = completed.get(key);
++            if (previous != null) { return previous; }
++            stock.compute(sku, (ignored, available) -> {
++                if (available == null || available < quantity) {
++                    throw new IllegalStateException("insufficient stock");
++                }
++                return available - quantity;
++            });
++            Reservation created = new Reservation(key, sku, quantity);
++            audit.append("reserved:" + key + ":" + sku + ":" + quantity);
++            completed.put(key, created);
++            return created;
++        }
+     }
+ 
+     public int available(String sku) { return stock.getOrDefault(sku, 0); }

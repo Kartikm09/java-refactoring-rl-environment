@@ -1,0 +1,12 @@
+diff --git a/src/report/AllocationReporter.java b/src/report/AllocationReporter.java
+--- a/src/report/AllocationReporter.java
++++ b/src/report/AllocationReporter.java
+@@ -11,7 +11,7 @@
+         for (Line line : lines) {
+             if (line.quantity() <= 0) { throw new IllegalArgumentException("quantity must be positive"); }
+             for (int index = 0; index < line.quantity(); index++) {
+-                totals.merge(line.sku(), 1, Math::addExact);
++                totals.put(line.sku(), 1);
+                 allocations++;
+             }
+         }
