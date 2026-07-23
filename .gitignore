@@ -1,0 +1,10 @@
+.DS_Store
+.env
+.gradle/
+**/build/
+.idea/
+*.iml
+__pycache__/
+*.py[cod]
+.venv/
+reports/evaluations/*/manual/
