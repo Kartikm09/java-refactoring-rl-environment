@@ -1,0 +1,20 @@
+name: Release check
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: read
+jobs:
+  verify-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "25"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: ./gradlew clean check integrationTest
+      - run: python scripts/verify_evaluations.py
