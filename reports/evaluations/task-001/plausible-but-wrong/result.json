@@ -1,0 +1,111 @@
+{
+  "acceptance_score": 80,
+  "accepted": false,
+  "changed_files": [
+    {
+      "after_sha256": "41ab7264c5e1367227a956f53ddf3e4d922d2fe8b75c7fbe5cb2dcac465ab28f",
+      "before_sha256": "49d4c1a18491fe2408130d51d136a4916085c18dffeef7edb1792914f6a75916",
+      "path": "src/lab/InventoryReservationService.java"
+    }
+  ],
+  "classification": "incomplete_solution",
+  "dry_run": false,
+  "evaluator_version": "0.1.0",
+  "message": "Required candidate documentation is missing",
+  "score": 25,
+  "score_breakdown": {
+    "awarded": {
+      "build": 15,
+      "determinism": 0,
+      "format": 5,
+      "held_out_tests": 0,
+      "lint": 5,
+      "public_tests": 0,
+      "regression_tests": 0
+    },
+    "functional_weight": 85,
+    "maximum": 100,
+    "missing_documentation": [
+      "CANDIDATE_NOTES.md"
+    ],
+    "score": 25,
+    "weights": {
+      "build": 15,
+      "determinism": 5,
+      "format": 5,
+      "held_out_tests": 30,
+      "lint": 5,
+      "public_tests": 25,
+      "regression_tests": 15
+    }
+  },
+  "stages": [
+    {
+      "command": [
+        "bash",
+        "scripts/format_check.sh"
+      ],
+      "duration_ms": 10,
+      "name": "format",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh"
+      ],
+      "duration_ms": 846,
+      "name": "lint",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh"
+      ],
+      "duration_ms": 558,
+      "name": "build",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_public.sh"
+      ],
+      "duration_ms": 846,
+      "name": "public_tests",
+      "passed": false,
+      "return_code": 1,
+      "stderr": "Exception in thread \"main\" java.lang.AssertionError: duplicate reservation changed state\n\tat lab.PublicTests.main(PublicTests.java:13)\n",
+      "stdout": "",
+      "timed_out": false
+    }
+  ],
+  "supported_classifications": [
+    "accepted",
+    "compile_error",
+    "build_error",
+    "test_failure",
+    "regression_failure",
+    "runtime_error",
+    "timeout",
+    "performance_regression",
+    "malformed_patch",
+    "prohibited_file_change",
+    "nondeterministic_result",
+    "incomplete_solution"
+  ],
+  "task_id": "task-001"
+}

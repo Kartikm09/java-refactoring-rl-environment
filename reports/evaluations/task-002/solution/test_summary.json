@@ -1,0 +1,96 @@
+{
+  "stages": [
+    {
+      "command": [
+        "bash",
+        "scripts/format_check.sh"
+      ],
+      "duration_ms": 11,
+      "name": "format",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh"
+      ],
+      "duration_ms": 679,
+      "name": "lint",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh"
+      ],
+      "duration_ms": 721,
+      "name": "build",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_public.sh"
+      ],
+      "duration_ms": 596,
+      "name": "public_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "public partial cancellation tests passed\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_held_out.sh"
+      ],
+      "duration_ms": 668,
+      "name": "held_out_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "held-out partial cancellation tests passed\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_regression.sh"
+      ],
+      "duration_ms": 715,
+      "name": "regression_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "full cancellation regression passed\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/determinism.sh"
+      ],
+      "duration_ms": 4,
+      "name": "determinism",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "seed=20260723;result=stable\n",
+      "timed_out": false
+    }
+  ],
+  "task_id": "task-002"
+}

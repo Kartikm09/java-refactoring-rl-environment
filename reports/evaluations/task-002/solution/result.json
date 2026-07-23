@@ -1,0 +1,152 @@
+{
+  "acceptance_score": 80,
+  "accepted": true,
+  "changed_files": [
+    {
+      "after_sha256": "c03cbd4c968393af34b00e5ed5f2eee770b35aa04ace18844d380e3dcfdc6665",
+      "before_sha256": null,
+      "path": "CANDIDATE_NOTES.md"
+    },
+    {
+      "after_sha256": "24c979c0c848e022b8c80cb50634cb04ecd0c4bfd3d20eee7ad0372d8cd7a003",
+      "before_sha256": "a3e6899c6114cbfaece2535ee23d45c83ec19837cb3083ae28ac4fa60251d3a3",
+      "path": "src/lab/Order.java"
+    }
+  ],
+  "classification": "accepted",
+  "dry_run": false,
+  "evaluator_version": "0.1.0",
+  "message": "All configured quality gates passed",
+  "score": 100,
+  "score_breakdown": {
+    "awarded": {
+      "build": 15,
+      "determinism": 5,
+      "format": 5,
+      "held_out_tests": 30,
+      "lint": 5,
+      "public_tests": 25,
+      "regression_tests": 15
+    },
+    "functional_weight": 85,
+    "maximum": 100,
+    "score": 100,
+    "weights": {
+      "build": 15,
+      "determinism": 5,
+      "format": 5,
+      "held_out_tests": 30,
+      "lint": 5,
+      "public_tests": 25,
+      "regression_tests": 15
+    }
+  },
+  "stages": [
+    {
+      "command": [
+        "bash",
+        "scripts/format_check.sh"
+      ],
+      "duration_ms": 11,
+      "name": "format",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh"
+      ],
+      "duration_ms": 679,
+      "name": "lint",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh"
+      ],
+      "duration_ms": 721,
+      "name": "build",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_public.sh"
+      ],
+      "duration_ms": 596,
+      "name": "public_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "public partial cancellation tests passed\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_held_out.sh"
+      ],
+      "duration_ms": 668,
+      "name": "held_out_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "held-out partial cancellation tests passed\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_regression.sh"
+      ],
+      "duration_ms": 715,
+      "name": "regression_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "full cancellation regression passed\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/determinism.sh"
+      ],
+      "duration_ms": 4,
+      "name": "determinism",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "seed=20260723;result=stable\n",
+      "timed_out": false
+    }
+  ],
+  "supported_classifications": [
+    "accepted",
+    "compile_error",
+    "build_error",
+    "test_failure",
+    "regression_failure",
+    "runtime_error",
+    "timeout",
+    "performance_regression",
+    "malformed_patch",
+    "prohibited_file_change",
+    "nondeterministic_result",
+    "incomplete_solution"
+  ],
+  "task_id": "task-002"
+}

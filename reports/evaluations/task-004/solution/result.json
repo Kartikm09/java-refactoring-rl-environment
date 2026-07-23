@@ -1,0 +1,167 @@
+{
+  "acceptance_score": 80,
+  "accepted": true,
+  "changed_files": [
+    {
+      "after_sha256": "8fa1c0563ada88de7f1e2c73c0ac800a5e0fba4016b4a3b68a49f2797b97d810",
+      "before_sha256": null,
+      "path": "CANDIDATE_NOTES.md"
+    },
+    {
+      "after_sha256": "b73ce85ba110ea762df6e9e4549559e13a26cfac171d932d5d44abaed7f66b47",
+      "before_sha256": "8f79db64a2ab7a8954503e3993f2ba0c2d6f1abaadde4ed47bec9ebde0f1d82e",
+      "path": "src/report/AllocationReporter.java"
+    }
+  ],
+  "classification": "accepted",
+  "dry_run": false,
+  "evaluator_version": "0.1.0",
+  "message": "All configured quality gates passed",
+  "score": 100,
+  "score_breakdown": {
+    "awarded": {
+      "benchmark": 10,
+      "build": 15,
+      "determinism": 5,
+      "format": 5,
+      "held_out_tests": 20,
+      "lint": 5,
+      "public_tests": 25,
+      "regression_tests": 15
+    },
+    "functional_weight": 75,
+    "maximum": 100,
+    "score": 100,
+    "weights": {
+      "benchmark": 10,
+      "build": 15,
+      "determinism": 5,
+      "format": 5,
+      "held_out_tests": 20,
+      "lint": 5,
+      "public_tests": 25,
+      "regression_tests": 15
+    }
+  },
+  "stages": [
+    {
+      "command": [
+        "bash",
+        "scripts/format_check.sh"
+      ],
+      "duration_ms": 6,
+      "name": "format",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh"
+      ],
+      "duration_ms": 475,
+      "name": "lint",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh"
+      ],
+      "duration_ms": 419,
+      "name": "build",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_public.sh"
+      ],
+      "duration_ms": 412,
+      "name": "public_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "public allocation tests passed\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_held_out.sh"
+      ],
+      "duration_ms": 437,
+      "name": "held_out_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "held-out allocation tests passed\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_regression.sh"
+      ],
+      "duration_ms": 498,
+      "name": "regression_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "allocation regression passed\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_benchmark.sh"
+      ],
+      "duration_ms": 74,
+      "name": "benchmark",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "{\"metric\":\"allocation_units\",\"value\":2}\n\nallocation_units=2.0; threshold lower 12",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/determinism.sh"
+      ],
+      "duration_ms": 5,
+      "name": "determinism",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "seed=20260723;result=stable\n",
+      "timed_out": false
+    }
+  ],
+  "supported_classifications": [
+    "accepted",
+    "compile_error",
+    "build_error",
+    "test_failure",
+    "regression_failure",
+    "runtime_error",
+    "timeout",
+    "performance_regression",
+    "malformed_patch",
+    "prohibited_file_change",
+    "nondeterministic_result",
+    "incomplete_solution"
+  ],
+  "task_id": "task-004"
+}

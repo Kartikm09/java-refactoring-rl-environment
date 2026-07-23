@@ -1,0 +1,12 @@
+[
+  {
+    "after_sha256": "8fa1c0563ada88de7f1e2c73c0ac800a5e0fba4016b4a3b68a49f2797b97d810",
+    "before_sha256": null,
+    "path": "CANDIDATE_NOTES.md"
+  },
+  {
+    "after_sha256": "b73ce85ba110ea762df6e9e4549559e13a26cfac171d932d5d44abaed7f66b47",
+    "before_sha256": "8f79db64a2ab7a8954503e3993f2ba0c2d6f1abaadde4ed47bec9ebde0f1d82e",
+    "path": "src/report/AllocationReporter.java"
+  }
+]

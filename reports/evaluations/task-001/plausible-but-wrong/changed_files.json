@@ -1,0 +1,7 @@
+[
+  {
+    "after_sha256": "41ab7264c5e1367227a956f53ddf3e4d922d2fe8b75c7fbe5cb2dcac465ab28f",
+    "before_sha256": "49d4c1a18491fe2408130d51d136a4916085c18dffeef7edb1792914f6a75916",
+    "path": "src/lab/InventoryReservationService.java"
+  }
+]

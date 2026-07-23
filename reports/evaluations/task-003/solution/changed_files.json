@@ -1,0 +1,22 @@
+[
+  {
+    "after_sha256": "f45a0f43b409b2249e4333b1177e3d28b6365ca252800e01768dc787d443c3f8",
+    "before_sha256": null,
+    "path": "CANDIDATE_NOTES.md"
+  },
+  {
+    "after_sha256": "cf70f0d0b197261e7f705430e7c38a7d1d0a6394d210e3496b50f38ddc895975",
+    "before_sha256": null,
+    "path": "src/pricing/PricingContext.java"
+  },
+  {
+    "after_sha256": "54e4eb2a4071acec82027e2ca25081ae1fe657b994566c434de30f42969df2c3",
+    "before_sha256": "133cecc9039606cd9c1fe3b8dea49f61ec26bd5d8cf5c6818f89eb000eca9c52",
+    "path": "src/pricing/PricingEngine.java"
+  },
+  {
+    "after_sha256": "aacbb06a7d5a39e4ad0c75018c56c3a0248ed1e5d1df5cb2ece5a646141eb06d",
+    "before_sha256": null,
+    "path": "src/pricing/PricingRule.java"
+  }
+]

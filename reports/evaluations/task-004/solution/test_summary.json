@@ -1,0 +1,109 @@
+{
+  "stages": [
+    {
+      "command": [
+        "bash",
+        "scripts/format_check.sh"
+      ],
+      "duration_ms": 6,
+      "name": "format",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh"
+      ],
+      "duration_ms": 475,
+      "name": "lint",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh"
+      ],
+      "duration_ms": 419,
+      "name": "build",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_public.sh"
+      ],
+      "duration_ms": 412,
+      "name": "public_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "public allocation tests passed\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_held_out.sh"
+      ],
+      "duration_ms": 437,
+      "name": "held_out_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "held-out allocation tests passed\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_regression.sh"
+      ],
+      "duration_ms": 498,
+      "name": "regression_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "allocation regression passed\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_benchmark.sh"
+      ],
+      "duration_ms": 74,
+      "name": "benchmark",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "{\"metric\":\"allocation_units\",\"value\":2}\n\nallocation_units=2.0; threshold lower 12",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/determinism.sh"
+      ],
+      "duration_ms": 5,
+      "name": "determinism",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "seed=20260723;result=stable\n",
+      "timed_out": false
+    }
+  ],
+  "task_id": "task-004"
+}

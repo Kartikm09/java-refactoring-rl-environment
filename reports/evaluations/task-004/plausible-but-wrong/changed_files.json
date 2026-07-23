@@ -1,0 +1,7 @@
+[
+  {
+    "after_sha256": "ed38b47778a800c81f0246888e9287f071fb242254c44f9181b4dfdc75f333b7",
+    "before_sha256": "8f79db64a2ab7a8954503e3993f2ba0c2d6f1abaadde4ed47bec9ebde0f1d82e",
+    "path": "src/report/AllocationReporter.java"
+  }
+]

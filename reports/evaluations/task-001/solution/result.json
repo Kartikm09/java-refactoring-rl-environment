@@ -1,0 +1,152 @@
+{
+  "acceptance_score": 80,
+  "accepted": true,
+  "changed_files": [
+    {
+      "after_sha256": "bb97a84f159a6f2e05178f15e6779ec920dc00dd4c9116e1618a6e1e4e0b2b22",
+      "before_sha256": null,
+      "path": "CANDIDATE_NOTES.md"
+    },
+    {
+      "after_sha256": "38c8832220ed2b2d67ee86dfedf5f5bbbfe890cf7d31efecf2de9809da605748",
+      "before_sha256": "49d4c1a18491fe2408130d51d136a4916085c18dffeef7edb1792914f6a75916",
+      "path": "src/lab/InventoryReservationService.java"
+    }
+  ],
+  "classification": "accepted",
+  "dry_run": false,
+  "evaluator_version": "0.1.0",
+  "message": "All configured quality gates passed",
+  "score": 100,
+  "score_breakdown": {
+    "awarded": {
+      "build": 15,
+      "determinism": 5,
+      "format": 5,
+      "held_out_tests": 30,
+      "lint": 5,
+      "public_tests": 25,
+      "regression_tests": 15
+    },
+    "functional_weight": 85,
+    "maximum": 100,
+    "score": 100,
+    "weights": {
+      "build": 15,
+      "determinism": 5,
+      "format": 5,
+      "held_out_tests": 30,
+      "lint": 5,
+      "public_tests": 25,
+      "regression_tests": 15
+    }
+  },
+  "stages": [
+    {
+      "command": [
+        "bash",
+        "scripts/format_check.sh"
+      ],
+      "duration_ms": 19,
+      "name": "format",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh"
+      ],
+      "duration_ms": 711,
+      "name": "lint",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh"
+      ],
+      "duration_ms": 679,
+      "name": "build",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_public.sh"
+      ],
+      "duration_ms": 639,
+      "name": "public_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "public reservation tests passed\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_held_out.sh"
+      ],
+      "duration_ms": 774,
+      "name": "held_out_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "held-out concurrency tests passed\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_regression.sh"
+      ],
+      "duration_ms": 700,
+      "name": "regression_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "regression tests passed\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/determinism.sh"
+      ],
+      "duration_ms": 14,
+      "name": "determinism",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "seed=20260723;result=stable\n",
+      "timed_out": false
+    }
+  ],
+  "supported_classifications": [
+    "accepted",
+    "compile_error",
+    "build_error",
+    "test_failure",
+    "regression_failure",
+    "runtime_error",
+    "timeout",
+    "performance_regression",
+    "malformed_patch",
+    "prohibited_file_change",
+    "nondeterministic_result",
+    "incomplete_solution"
+  ],
+  "task_id": "task-001"
+}

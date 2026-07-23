@@ -1,0 +1,113 @@
+{
+  "acceptance_score": 80,
+  "accepted": false,
+  "changed_files": [
+    {
+      "after_sha256": "ed38b47778a800c81f0246888e9287f071fb242254c44f9181b4dfdc75f333b7",
+      "before_sha256": "8f79db64a2ab7a8954503e3993f2ba0c2d6f1abaadde4ed47bec9ebde0f1d82e",
+      "path": "src/report/AllocationReporter.java"
+    }
+  ],
+  "classification": "incomplete_solution",
+  "dry_run": false,
+  "evaluator_version": "0.1.0",
+  "message": "Required candidate documentation is missing",
+  "score": 25,
+  "score_breakdown": {
+    "awarded": {
+      "benchmark": 0,
+      "build": 15,
+      "determinism": 0,
+      "format": 5,
+      "held_out_tests": 0,
+      "lint": 5,
+      "public_tests": 0,
+      "regression_tests": 0
+    },
+    "functional_weight": 75,
+    "maximum": 100,
+    "missing_documentation": [
+      "CANDIDATE_NOTES.md"
+    ],
+    "score": 25,
+    "weights": {
+      "benchmark": 10,
+      "build": 15,
+      "determinism": 5,
+      "format": 5,
+      "held_out_tests": 20,
+      "lint": 5,
+      "public_tests": 25,
+      "regression_tests": 15
+    }
+  },
+  "stages": [
+    {
+      "command": [
+        "bash",
+        "scripts/format_check.sh"
+      ],
+      "duration_ms": 6,
+      "name": "format",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh"
+      ],
+      "duration_ms": 401,
+      "name": "lint",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh"
+      ],
+      "duration_ms": 438,
+      "name": "build",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_public.sh"
+      ],
+      "duration_ms": 467,
+      "name": "public_tests",
+      "passed": false,
+      "return_code": 1,
+      "stderr": "Exception in thread \"main\" java.lang.AssertionError: ReportResult[totals={A=1, B=1}, allocationUnits=9]\n\tat lab.PublicTests.main(PublicTests.java:9)\n",
+      "stdout": "",
+      "timed_out": false
+    }
+  ],
+  "supported_classifications": [
+    "accepted",
+    "compile_error",
+    "build_error",
+    "test_failure",
+    "regression_failure",
+    "runtime_error",
+    "timeout",
+    "performance_regression",
+    "malformed_patch",
+    "prohibited_file_change",
+    "nondeterministic_result",
+    "incomplete_solution"
+  ],
+  "task_id": "task-004"
+}

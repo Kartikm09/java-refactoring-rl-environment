@@ -1,0 +1,162 @@
+{
+  "acceptance_score": 80,
+  "accepted": true,
+  "changed_files": [
+    {
+      "after_sha256": "f45a0f43b409b2249e4333b1177e3d28b6365ca252800e01768dc787d443c3f8",
+      "before_sha256": null,
+      "path": "CANDIDATE_NOTES.md"
+    },
+    {
+      "after_sha256": "cf70f0d0b197261e7f705430e7c38a7d1d0a6394d210e3496b50f38ddc895975",
+      "before_sha256": null,
+      "path": "src/pricing/PricingContext.java"
+    },
+    {
+      "after_sha256": "54e4eb2a4071acec82027e2ca25081ae1fe657b994566c434de30f42969df2c3",
+      "before_sha256": "133cecc9039606cd9c1fe3b8dea49f61ec26bd5d8cf5c6818f89eb000eca9c52",
+      "path": "src/pricing/PricingEngine.java"
+    },
+    {
+      "after_sha256": "aacbb06a7d5a39e4ad0c75018c56c3a0248ed1e5d1df5cb2ece5a646141eb06d",
+      "before_sha256": null,
+      "path": "src/pricing/PricingRule.java"
+    }
+  ],
+  "classification": "accepted",
+  "dry_run": false,
+  "evaluator_version": "0.1.0",
+  "message": "All configured quality gates passed",
+  "score": 100,
+  "score_breakdown": {
+    "awarded": {
+      "build": 15,
+      "determinism": 5,
+      "format": 5,
+      "held_out_tests": 30,
+      "lint": 5,
+      "public_tests": 25,
+      "regression_tests": 15
+    },
+    "functional_weight": 85,
+    "maximum": 100,
+    "score": 100,
+    "weights": {
+      "build": 15,
+      "determinism": 5,
+      "format": 5,
+      "held_out_tests": 30,
+      "lint": 5,
+      "public_tests": 25,
+      "regression_tests": 15
+    }
+  },
+  "stages": [
+    {
+      "command": [
+        "bash",
+        "scripts/format_check.sh"
+      ],
+      "duration_ms": 13,
+      "name": "format",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh"
+      ],
+      "duration_ms": 567,
+      "name": "lint",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/build.sh"
+      ],
+      "duration_ms": 624,
+      "name": "build",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_public.sh"
+      ],
+      "duration_ms": 542,
+      "name": "public_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "public pricing refactor tests passed\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_held_out.sh"
+      ],
+      "duration_ms": 429,
+      "name": "held_out_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "held-out golden master passed\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/run_regression.sh"
+      ],
+      "duration_ms": 356,
+      "name": "regression_tests",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "pricing floor regression passed\n",
+      "timed_out": false
+    },
+    {
+      "command": [
+        "bash",
+        "scripts/determinism.sh"
+      ],
+      "duration_ms": 4,
+      "name": "determinism",
+      "passed": true,
+      "return_code": 0,
+      "stderr": "",
+      "stdout": "seed=20260723;result=stable\n",
+      "timed_out": false
+    }
+  ],
+  "supported_classifications": [
+    "accepted",
+    "compile_error",
+    "build_error",
+    "test_failure",
+    "regression_failure",
+    "runtime_error",
+    "timeout",
+    "performance_regression",
+    "malformed_patch",
+    "prohibited_file_change",
+    "nondeterministic_result",
+    "incomplete_solution"
+  ],
+  "task_id": "task-003"
+}

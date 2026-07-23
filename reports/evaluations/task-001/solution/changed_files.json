@@ -1,0 +1,12 @@
+[
+  {
+    "after_sha256": "bb97a84f159a6f2e05178f15e6779ec920dc00dd4c9116e1618a6e1e4e0b2b22",
+    "before_sha256": null,
+    "path": "CANDIDATE_NOTES.md"
+  },
+  {
+    "after_sha256": "38c8832220ed2b2d67ee86dfedf5f5bbbfe890cf7d31efecf2de9809da605748",
+    "before_sha256": "49d4c1a18491fe2408130d51d136a4916085c18dffeef7edb1792914f6a75916",
+    "path": "src/lab/InventoryReservationService.java"
+  }
+]
