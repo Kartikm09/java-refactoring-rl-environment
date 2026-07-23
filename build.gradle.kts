@@ -26,7 +26,7 @@ subprojects {
             toolchain { languageVersion.set(JavaLanguageVersion.of(25)) }
         }
         dependencies {
-            "testImplementation"(platform("org.junit:junit-bom:6.0.2"))
+            "testImplementation"(platform("org.junit:junit-bom:6.1.2"))
             "testImplementation"("org.junit.jupiter:junit-jupiter")
             "testImplementation"("org.assertj:assertj-core:3.27.7")
             "testRuntimeOnly"("org.junit.platform:junit-platform-launcher")
