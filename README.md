@@ -95,6 +95,16 @@ concurrency safety, transaction compensation, API contracts, JUnit, AssertJ, Spo
 Checkstyle, JaCoCo, JMH, Python evaluation tooling, CI/CD, Docker, code review, and
 benchmark interpretation.
 
+## Task authoring walkthrough (`task-001`)
+
+1. Read the `task-001` baseline sources and its public tests in the candidate workspace.
+2. Keep held-out and regression tests in the internal evaluation copy only; the candidate
+   workspace excludes them so a patch cannot read or edit the grading oracle.
+3. Record the reference fix in `golden/solution.patch` and verify it passes both suites.
+4. Add negative controls (incorrect patches) that must fail held-out tests.
+5. Configure scoring so results land in `reports/evaluations/`.
+6. Author guidance applies to the existing four tasks only; do not add a fifth task.
+
 ## Recruiter walkthrough
 
 1. Scan the architecture and task table above.
