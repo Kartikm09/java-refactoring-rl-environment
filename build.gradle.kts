@@ -5,8 +5,8 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 
 plugins {
     base
-    id("com.github.spotbugs") version "6.5.9" apply false
-    id("me.champeau.jmh") version "0.7.3" apply false
+    id("com.github.spotbugs") version "6.5.13" apply false
+    id("me.champeau.jmh") version "0.7.4" apply false
 }
 
 allprojects {
@@ -26,7 +26,7 @@ subprojects {
             toolchain { languageVersion.set(JavaLanguageVersion.of(25)) }
         }
         dependencies {
-            "testImplementation"(platform("org.junit:junit-bom:6.1.2"))
+            "testImplementation"(platform("org.junit:junit-bom:6.1.3"))
             "testImplementation"("org.junit.jupiter:junit-jupiter")
             "testImplementation"("org.assertj:assertj-core:3.27.7")
             "testRuntimeOnly"("org.junit.platform:junit-platform-launcher")
